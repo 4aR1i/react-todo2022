@@ -1,0 +1,70 @@
+.addtask {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  cursor: pointer;
+
+  svg {
+    display: block;
+  }
+}
+
+.popup-addtask {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+  margin-top: 20px;
+  max-width: 300px;
+
+  &__input {
+    display: block;
+    width: 230px;
+    padding: 3px;
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+    letter-spacing: 0.15px;
+    color: #969494;
+    outline: none;
+
+    &:nth-child(2) {
+      min-height: 60px;
+    }
+  }
+
+  &__buttons {
+    button {
+      width: 110px;
+      padding: 6px 0;
+      margin-right: 10px;
+      font-family: 'Nunito Sans', sans-serif;
+      background: #4dd599;
+      color: #fff;
+      border-radius: 5px;
+      border: 0;
+      cursor: pointer;
+
+      &:last-child {
+        margin: 0;
+        background: #f4f6f8;
+        color: #9c9c9c;
+      }
+    }
+  }
+
+  &__priority {
+    display: flex;
+    gap: 10px;
+
+    & p,
+    & span {
+      font-family: 'Nunito Sans', sans-serif;
+      font-weight: 600;
+      font-size: 16px;
+      color: #969494;
+      cursor: pointer;
+    }
+  }
+}

@@ -1,0 +1,36 @@
+.tasks {
+  &__title {
+    font-weight: 800;
+    font-size: 32px;
+    margin-bottom: 20px;
+  }
+
+  &__sections {
+    display: flex;
+    justify-content: space-around;
+  }
+}
+
+.item-tasks {
+  width: 30%;
+  min-height: 350px;
+  background: RGBA(116, 137, 80, 0.4);
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+
+  &__title {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+
+  &__list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+}

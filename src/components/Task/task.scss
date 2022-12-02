@@ -1,0 +1,31 @@
+.task {
+  position: relative;
+  background: #5497ea;
+  border-radius: 10px;
+  padding: 5px;
+  cursor: grab;
+
+  &__title {
+    font-size: 18px;
+    font-weight: 700;
+  }
+
+  &__delete {
+    display: none;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    color: #fff;
+    font-size: 20px;
+    transition: 0.3s ease-in-out;
+    cursor: pointer;
+
+    &:hover {
+      scale: 1.4;
+    }
+  }
+
+  &:hover .task__delete {
+    display: block;
+  }
+}

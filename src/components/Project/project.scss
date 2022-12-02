@@ -1,0 +1,74 @@
+.project {
+  position: relative;
+
+  width: 100%;
+  background: #ce52ad;
+  padding: 10px;
+  border-radius: 5px;
+  transition: 0.2s ease-in-out;
+  cursor: pointer;
+
+  &__wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__delete {
+    display: none;
+    color: #fff;
+    font-size: 20px;
+    transition: 0.3s ease-in-out;
+
+    &:hover {
+      scale: 1.4;
+    }
+  }
+
+  &:hover .project__delete {
+    display: flex;
+    align-items: center;
+  }
+
+  &:hover {
+    scale: 1.01;
+  }
+
+  &__title {
+    color: #fff;
+    font-size: 16px;
+    font-weight: 800;
+  }
+
+  &.purple {
+    background: #6a6dcd;
+  }
+
+  &.blue {
+    background: #307fe2;
+  }
+
+  &.pink {
+    background: #c440a1;
+  }
+
+  &.red {
+    background: #d93535;
+  }
+
+  &.lightgreen {
+    background: #00a88b;
+  }
+
+  &.green {
+    background: #146b44;
+  }
+
+  &.black {
+    background: #000;
+  }
+
+  &.grey {
+    background: rgb(91, 87, 87);
+  }
+}

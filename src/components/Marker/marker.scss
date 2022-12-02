@@ -1,0 +1,46 @@
+.marker {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  cursor: pointer;
+
+  &.purple {
+    background: #6a6dcd;
+  }
+
+  &.blue {
+    background: #307fe2;
+  }
+
+  &.pink {
+    background: #c440a1;
+  }
+
+  &.red {
+    background: #d93535;
+  }
+
+  &.lightgreen {
+    background: #00a88b;
+  }
+
+  &.green {
+    background: #146b44;
+  }
+
+  &.black {
+    background: #000;
+  }
+
+  &.grey {
+    background: rgb(91, 87, 87);
+  }
+
+  &-active {
+    border: 2px solid #525252;
+  }
+}
+
+.activeColor {
+  border: 2px solid #fff;
+}
