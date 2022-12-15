@@ -2,35 +2,35 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { BiX } from 'react-icons/bi';
 
-import { ProjectsType, removeProjectTC } from '../../redux/reduscers/projectsReducer';
+import { removeProject } from '../../actions/projectsApi';
+import { ProjectsType } from '../../redux/reduscers/projectsReducer';
 import { getActiveProject } from '../../redux/reduscers/tasksReducer';
 import { useDispatch } from 'react-redux';
 
 import './project.scss';
 
-const Project: React.FC<ProjectsType> = ({ id, project_id, title, color }) => {
+const Project: React.FC<ProjectsType> = ({ _id, title, color, tasks }) => {
   const dispatch = useDispatch<any>();
 
   const removeButton = () => {
-    dispatch(removeProjectTC(id));
+    dispatch(removeProject(_id));
   };
 
   const chooseProject = () => {
-    dispatch(getActiveProject(id));
-    localStorage.setItem('projectId', `${project_id}`);
+    dispatch(getActiveProject(_id));
+    localStorage.setItem('projectId', `${_id}`);
   };
 
   return (
-    <section onClick={() => chooseProject()} className={`project ${color}`}>
+    <div onClick={() => chooseProject()} className={`project ${color}`}>
       <Link to="/tasks">
-        <div className="project__wrapper">
-          <h3 className="project__title">{title}</h3>
-          <div onClick={removeButton} className="project__delete">
-            <BiX />
-          </div>
-        </div>
+        <h3 className="project__title">{title}</h3>
+        <b>Tasks: </b><span>{tasks.length}</span>
       </Link>
-    </section>
+      <div onClick={removeButton} className="project__delete">
+        <BiX />
+      </div>
+    </div>
   );
 };
 

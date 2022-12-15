@@ -1,31 +1,83 @@
 .task {
   position: relative;
-  background: #5497ea;
-  border-radius: 10px;
+  background: #fff;
+  border-radius: 4px;
   padding: 5px;
-  cursor: grab;
+  padding-left: 7px;
+  overflow: hidden;
+  cursor: all-scroll;
 
   &__title {
-    font-size: 18px;
+    font-size: 17px;
     font-weight: 700;
+    max-width: 90%;
+  }
+
+  & b {
+    font-size: 15px;
+  }
+
+  & span {
+    font-size: 14px;
   }
 
   &__delete {
     display: none;
     position: absolute;
-    top: 5px;
-    right: 5px;
-    color: #fff;
+    top: 2px;
+    right: 2px;
+    color: #000;
     font-size: 20px;
     transition: 0.3s ease-in-out;
     cursor: pointer;
 
     &:hover {
-      scale: 1.4;
+      scale: 1.3;
     }
   }
 
   &:hover .task__delete {
     display: block;
+  }
+
+  &__color {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 4px;
+    background: #fff;
+
+    &.purple {
+      background: #6a6dcd;
+    }
+
+    &.blue {
+      background: #307fe2;
+    }
+
+    &.pink {
+      background: #c440a1;
+    }
+
+    &.red {
+      background: #d93535;
+    }
+
+    &.lightgreen {
+      background: #00a88b;
+    }
+
+    &.green {
+      background: #146b44;
+    }
+
+    &.black {
+      background: #000;
+    }
+
+    &.grey {
+      background: #999c9d;
+    }
   }
 }

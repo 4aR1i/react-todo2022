@@ -1,11 +1,12 @@
 .addProject {
-  position: absolute;
-  bottom: 30px;
-  right: 30px;
-  width: 60px;
-  height: 60px;
+  position: fixed;
+  bottom: 70px;
+  right: 70px;
+  width: 50px;
+  height: 50px;
+  border: 2px solid #5e6c84;
   border-radius: 50%;
-  background: #262626;
+  background: #fff;
   color: #fff;
   font-size: 40px;
   transition: 0.3s ease-in-out;
@@ -20,7 +21,7 @@
     justify-content: flex-end;
     align-items: center;
     gap: 10px;
-    width: 300px;
+    width: 285px;
     height: 150px;
     padding: 20px;
     border-radius: 10px;
@@ -29,8 +30,10 @@
 
   &__plus {
     position: absolute;
-    top: 10px;
-    right: 10px;
+    font-size: 30px;
+    top: 8px;
+    right: 8px;
+    color: #5e6c84;
     transition: 0.3s ease-in-out;
 
     svg {
@@ -56,7 +59,8 @@
     font-size: 14px;
     line-height: 17px;
     letter-spacing: 0.15px;
-    color: #969494;
+    border: 2px solid #5e6c84;
+    color: #5e6c84;
     transform: translateY(20px);
     outline: none;
 
@@ -87,7 +91,7 @@
     width: 230px;
     padding: 6px 0;
     font-family: 'Nunito Sans', sans-serif;
-    background: #4dd599;
+    background: #172b4d;
     color: #fff;
     border-radius: 5px;
     border: 0;
@@ -99,5 +103,19 @@
       transform: translateY(0);
       opacity: 1;
     }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .addProject {
+    bottom: 10px;
+    right: 10px;
+  }
+}
+
+@media screen and (min-width: 1300px) {
+  .addProject {
+    bottom: 100px;
+    right: 220px;
   }
 }

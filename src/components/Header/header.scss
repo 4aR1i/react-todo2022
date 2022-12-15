@@ -4,9 +4,10 @@
   }
 
   &__title {
-    font-weight: 900;
+    font-weight: 700;
     font-size: 40px;
     line-height: 50px;
+    color: #172b4d;
     width: fit-content;
 
     span:nth-child(1) {
@@ -19,8 +20,20 @@
   }
 
   &__description {
-    font-weight: 700;
-    font-size: 15px;
-    color: #9d9d9d;
+    font-weight: 600;
+    font-size: 16px;
+    color: #5e6c84;
+  }
+
+  @media screen and (max-width: 500px) {
+    &__title {
+      font-weight: 800;
+      font-size: 26px;
+      line-height: 30px;
+    }
+
+    &__description {
+      font-size: 12px;
+    }
   }
 }

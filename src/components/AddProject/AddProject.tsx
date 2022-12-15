@@ -1,8 +1,9 @@
 import React from 'react';
 import { BiPlus } from 'react-icons/bi';
+import { addProject } from '../../actions/projectsApi';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { addProjectTC, ProjectsType } from '../../redux/reduscers/projectsReducer';
+import { ProjectsType } from '../../redux/reduscers/projectsReducer';
 import { AppStateType } from '../../redux/store';
 
 import Marker from '../Marker/Marker';
@@ -20,31 +21,24 @@ const AddProject: React.FC = () => {
     { id: 6, color: 'green' },
     { id: 7, color: 'black' },
   ];
-  
+
   const [activeAddProject, setActiveAddProject] = React.useState(false);
-  const [activeColor, setActiveColor] = React.useState(markers[0].id);
+  const [activeColor, setActiveColor] = React.useState(0);
   const [inputValue, setInputValue] = React.useState('');
 
   const dispatch = useDispatch<any>();
-  const projects = useSelector<AppStateType, ProjectsType[]>((store) => store.projects.projects);
 
   const activatingColor = (id: number) => {
     setActiveColor(id);
   };
 
-  const randomId = () => {
-    const randomNumber = (() => Math.floor(Math.random() * 100))();
-    const findId = projects.find((item: ProjectsType) => item.project_id === randomNumber);
-    if (!findId) {
-      return randomNumber;
-    }
-    randomId();
-  };
-
   const addButton = () => {
-    const obj = { id: '', project_id: randomId(), title: inputValue, color: markers[activeColor].color };
-    dispatch(addProjectTC(obj));
+    let title = inputValue ? inputValue[0].toUpperCase() + inputValue.slice(1) : '';
+    const obj = { _id: '', title: title, color: markers[activeColor].color, __v: 0, tasks: [] };
+    dispatch(addProject(obj));
     setInputValue('');
+    setActiveAddProject(false);
+    setActiveColor(0);
   };
 
   return (
@@ -58,7 +52,7 @@ const AddProject: React.FC = () => {
           <Marker key={i} {...item} activating={activatingColor} active={activeColor} />
         ))}
       </div>
-      <button onClick={addButton} className={`addProject__btn ${activeAddProject ? 'active' : ''}`}>
+      <button onClick={addButton} disabled={inputValue ? false : true} className={`addProject__btn ${activeAddProject ? 'active' : ''}`}>
         Add
       </button>
     </div>

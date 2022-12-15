@@ -1,18 +1,22 @@
 import React from 'react';
 import { BiPlus } from 'react-icons/bi';
+import { addTask } from '../../actions/tasksApi';
 
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
-import { addQueueTaskTC } from '../../redux/reduscers/tasksReducer';
 import { AppStateType } from '../../redux/store';
+import { TaskType } from '../../redux/reduscers/tasksReducer';
 
 import './addtask.scss';
+import { ProjectsType } from '../../redux/reduscers/projectsReducer';
 
 const AddTask: React.FC = () => {
   const priorityValue = ['Low', 'Medium', 'High'];
 
   const dispatch = useDispatch<any>();
   const activeProject = useSelector<AppStateType, string>((store) => store.tasks.activeProject);
+  const tasks = useSelector<AppStateType, TaskType[]>((store) => store.tasks.tasks);
+  const projects = useSelector<AppStateType, ProjectsType[]>((state) => state.projects.projects);
 
   const [openAddTask, setOpenAddTask] = React.useState(false);
   const [inputValue, setInputValue] = React.useState('');
@@ -28,12 +32,20 @@ const AddTask: React.FC = () => {
   const adding = () => {
     const date = new Date();
     const startDate = date.getDate() + '.' + (date.getMonth() + 1) + '.' + date.getFullYear();
-    const obj = { id: '', title: inputValue, description: textAreaValue, project_id: Number(activeProject), priority: selectedPriority, start: startDate };
-    dispatch(addQueueTaskTC(obj));
+    let title = inputValue ? inputValue[0].toUpperCase() + inputValue.slice(1) : '';
+    const currentProject = projects.find((item) => item._id === activeProject);
+    const obj = { _id: '', __v: 0, number: tasks.length + 1, title: title, description: textAreaValue, project: activeProject, priority: selectedPriority, start: startDate, progress: 'Queue', color: currentProject.color };
+    dispatch(addTask(obj));
     setOpenAddTask(false);
     setInputValue('');
     setTextAreaValue('');
     setSelectedPriority('Medium');
+  };
+
+  const cancel = () => {
+    setOpenAddTask((prev) => !prev);
+    setInputValue('');
+    setTextAreaValue('');
   };
 
   if (!openAddTask) {
@@ -64,7 +76,7 @@ const AddTask: React.FC = () => {
       </div>
       <div className="popup-addtask__buttons">
         <button onClick={adding}>Add</button>
-        <button onClick={() => setOpenAddTask((prev) => !prev)}>Cancel</button>
+        <button onClick={cancel}>Cancel</button>
       </div>
     </div>
   );

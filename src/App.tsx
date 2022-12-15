@@ -7,14 +7,16 @@ import TaskList from './pages/TaskList/TaskList';
 
 const App: React.FC = () => {
   return (
-    <div className="wrapper">
-      <Header />
-      <div className="line"></div>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/tasks" element={<TaskList />} />
-      </Routes>
-    </div>
+    <>
+      <div className="wrapper">
+        <Header />
+        <div className="line"></div>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/tasks" element={<TaskList />} />
+        </Routes>
+      </div>
+    </>
   );
 };
 
