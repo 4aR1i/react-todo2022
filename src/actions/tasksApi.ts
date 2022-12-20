@@ -13,12 +13,15 @@ export const addTask = (obj: TaskType) => {
   };
 };
 
-export const updateTask = async (obj: TaskType) => {
-  try {
-    await axios.put('http://localhost:5000/api/projects/', obj);
-  } catch (e) {
-    console.error('Произошла ошибка при обновлении задачи');
-  }
+export const updateTask = (obj: TaskType) => {
+  return async (dispatch: Dispatch<any>) => {
+    try {
+      const { data } = await axios.put('http://localhost:5000/api/projects/', obj);
+      dispatch(getTasksAC(data));
+    } catch (e) {
+      console.error('Произошла ошибка при загрузке списка задач');
+    }
+  };
 };
 
 export const getTasks = (id: string) => {

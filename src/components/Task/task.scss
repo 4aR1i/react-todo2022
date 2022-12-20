@@ -4,13 +4,14 @@
   border-radius: 4px;
   padding: 5px;
   padding-left: 7px;
-  overflow: hidden;
+  height: fit-content;
   cursor: all-scroll;
 
   &__title {
     font-size: 17px;
     font-weight: 700;
     max-width: 90%;
+    overflow-wrap: break-word;
   }
 
   & b {
@@ -19,6 +20,8 @@
 
   & span {
     font-size: 14px;
+    overflow-wrap: break-word;
+    margin-right: 3px;
   }
 
   &__delete {
@@ -36,8 +39,59 @@
     }
   }
 
-  &:hover .task__delete {
+  &__edits {
+    display: none;
+    position: absolute;
+    top: 4px;
+    right: 22px;
+    color: #000;
+    font-size: 16px;
+    transition: 0.3s ease-in-out;
+    cursor: pointer;
+
+    &:hover {
+      scale: 1.3;
+    }
+  }
+
+  &:hover .task__delete,
+  &:hover .task__edits {
     display: block;
+  }
+
+  &__buttons {
+    position: absolute;
+    right: 6px;
+    bottom: 5px;
+
+    & button {
+      font-family: 'Nunito Sans', sans-serif;
+      width: 42px;
+      font-size: 12px;
+      border-radius: 1px;
+      border: 0;
+      cursor: pointer;
+    }
+
+    & button:nth-child(1) {
+      background: #f4f6f8;
+      color: #9c9c9c;
+    }
+
+    & button:nth-child(2) {
+      background: #172b4d;
+      color: #fff;
+      margin-left: 8px;
+    }
+  }
+
+  .item-priority {
+    cursor: pointer;
+  }
+
+  .item-priority.active {
+    color: #0e1c34;
+    font-weight: 800;
   }
 
   &__color {
@@ -47,6 +101,7 @@
     height: 100%;
     width: 4px;
     background: #fff;
+    overflow: hidden;
 
     &.purple {
       background: #6a6dcd;

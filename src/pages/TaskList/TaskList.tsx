@@ -10,6 +10,7 @@ import { useSelector } from 'react-redux';
 import { AppStateType } from '../../redux/store';
 
 import './tasklist.scss';
+import { getProjects } from '../../actions/projectsApi';
 
 export type BoardType = {
   id: number;
@@ -23,9 +24,9 @@ const TaskList: React.FC = () => {
 
   const isMounted = React.useRef(false);
 
-  const tasksQueue = tasks.filter((item) => item.progress === 'Queue');
-  const tasksDevelopment = tasks.filter((item) => item.progress === 'Development');
-  const tasksDone = tasks.filter((item) => item.progress === 'Done');
+  const tasksQueue = tasks.filter((item: TaskType) => item.progress === 'Queue');
+  const tasksDevelopment = tasks.filter((item: TaskType) => item.progress === 'Development');
+  const tasksDone = tasks.filter((item: TaskType) => item.progress === 'Done');
 
   const [boards, setBoards] = React.useState([
     { id: 1, title: 'Queue', items: tasksQueue },
@@ -37,6 +38,7 @@ const TaskList: React.FC = () => {
 
   React.useEffect(() => {
     let projectId = localStorage.getItem('projectId');
+    dispatch(getProjects());
     dispatch(getTasks(projectId));
   }, []);
 
@@ -67,7 +69,7 @@ const TaskList: React.FC = () => {
     currentBoard.items.splice(currentIndex, 1);
     currentItem.progress = board.title;
     board.items.push(currentItem);
-    updateTask(currentItem);
+    dispatch(updateTask(currentItem));
     setBoards(
       boards.map((b) => {
         if (b.id === board.id) {
