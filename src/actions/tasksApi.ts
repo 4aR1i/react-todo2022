@@ -5,7 +5,7 @@ import { addTaskAC, getTasksAC, removeTaskAC, TaskType } from '../redux/reduscer
 export const addTask = (obj: TaskType) => {
   return async (dispatch: Dispatch<any>) => {
     try {
-      const { data } = await axios.post(`${process.env.REACT_APP_API_URL}/api/projects/api/projects/tasks/`, obj);
+      const { data } = await axios.post(`${process.env.REACT_APP_API_URL}api/projects/tasks/`, obj);
       dispatch(addTaskAC(data));
     } catch (e) {
       console.error('Произошла ошибка при добавлении задачи');
@@ -16,7 +16,7 @@ export const addTask = (obj: TaskType) => {
 export const updateTask = (obj: TaskType) => {
   return async (dispatch: Dispatch<any>) => {
     try {
-      const { data } = await axios.put(`${process.env.REACT_APP_API_URL}/api/projects/api/projects/`, obj);
+      const { data } = await axios.put(`${process.env.REACT_APP_API_URL}api/projects/`, obj);
       dispatch(getTasksAC(data));
     } catch (e) {
       console.error('Произошла ошибка при загрузке списка задач');
@@ -27,7 +27,7 @@ export const updateTask = (obj: TaskType) => {
 export const getTasks = (id: string) => {
   return async (dispatch: Dispatch<any>) => {
     try {
-      const { data } = await axios.get(`${process.env.REACT_APP_API_URL}/api/projects/api/projects/tasks/${id}`);
+      const { data } = await axios.get(`${process.env.REACT_APP_API_URL}api/projects/tasks/${id}`);
       dispatch(getTasksAC(data));
     } catch (e) {
       console.error('Произошла ошибка при загрузке списка задач');
@@ -38,7 +38,7 @@ export const getTasks = (id: string) => {
 export const removeTask = (projectId: string, id: string) => {
   return async (dispatch: Dispatch<any>) => {
     try {
-      const { data } = await axios.delete(`${process.env.REACT_APP_API_URL}/api/projects/api/projects/${projectId}/tasks/${id}`);
+      const { data } = await axios.delete(`${process.env.REACT_APP_API_URL}api/projects/${projectId}/tasks/${id}`);
       dispatch(removeTaskAC(data));
     } catch (e) {
       console.error('Произошла ошибка при удалении задачи');
